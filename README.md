@@ -2,60 +2,6 @@
 
 **BitSealer** es una aplicación Full-Stack que permite **sellar archivos digitalmente** registrando su huella criptográfica (hash SHA-256) en la **blockchain de Bitcoin**, garantizando su existencia y autenticidad en el tiempo.
 
-> Proyecto modular desarrollado en **Spring Boot 3 + React**, con un enfoque en seguridad, escalabilidad y trazabilidad.
-
----
-
-## 🧱 Arquitectura del ecosistema
-
-BitSealer/
-├── bitsealer-backend/ → API REST (Spring Boot 3, PostgreSQL, JWT)
-├── bitsealer-frontend/ → Panel web (React + Tailwind + Axios)
-└── bitsealer-timestamp/ → Microservicio Blockchain (en desarrollo)
-
-Cada módulo puede ejecutarse de forma independiente o en conjunto mediante Docker.
-
----
-
-## ⚙️ Tecnologías principales
-
-| Capa | Tecnologías |
-|------|--------------|
-| **Backend** | Java 17 · Spring Boot 3.5 · Spring Security 6 · JJWT 0.12.5 · PostgreSQL 14 · Flyway · Testcontainers |
-| **Frontend** | React · Vite · TailwindCSS · Axios · Context API |
-| **Infraestructura** | Docker · Docker Compose · JWT Auth · REST API |
-| **Blockchain (próximamente)** | OpenTimestamps · Bitcoin Core RPC / API Wrapper |
-
----
-
-## 🚀 Funcionalidades actuales
-
-✅ Registro y autenticación de usuarios (JWT + BCrypt)  
-✅ Subida y cálculo de hash SHA-256 de archivos  
-✅ Historial de archivos sellados por usuario  
-✅ Dashboard con métricas básicas y sellos recientes  
-🔒 Seguridad implementada con Spring Security + filtros JWT  
-⚙️ Preparado para despliegue con Docker (PostgreSQL + API + Frontend)
-
----
-
-## 🧩 Próximas implementaciones
-
-🔗 Sellado real en blockchain mediante **OpenTimestamps**  
-📊 Gráficas de uso y estadísticas avanzadas en el Dashboard  
-💬 Sistema de notificaciones por correo y API REST pública  
-💰 Integración con sistema de tarifas BTC / fee market  
-
----
-
-## 🧠 Filosofía del proyecto
-
-BitSealer nace con el objetivo de **acercar la tecnología blockchain a la verificación documental**.  
-El sistema no guarda archivos, solo sus huellas criptográficas, asegurando privacidad y trazabilidad.
-
-La arquitectura se ha diseñado siguiendo principios **Clean Architecture** y separación por capas:  
-`Controller → Service → Repository → Model`, con DTOs intermedios y pruebas integradas mediante **Testcontainers**.
-
 ---
 
 ## 🧩 Módulos
@@ -76,6 +22,53 @@ La arquitectura se ha diseñado siguiendo principios **Clean Architecture** y se
 - Conexión con Bitcoin Core o nodos públicos  
 - Generación y verificación de pruebas OpenTimestamps  
 - Preparado para integración asincrónica con el backend principal  
+
+---
+
+## 🔄 Flujo general del ecosistema BitSealer
+
+```mermaid
+graph TD
+    A[👤 Usuario Web] -->|HTTP / JSON| B[🌐 BitSealer Frontend<br/>(React + Tailwind)]
+    B -->|REST API / JWT| C[⚙️ BitSealer Backend<br/>(Spring Boot + PostgreSQL)]
+    C -->|Async Task / HTTP| D[⛓️ BitSealer Timestamp<br/>(Microservicio Blockchain)]
+    D -->|RPC / API| E[₿ Bitcoin Network]
+    C -->|Persistencia| F[(🗄️ Base de Datos PostgreSQL)]
+
+    click B "https://github.com/BitSealer/bitsealer-frontend" "Ver Frontend"
+    click C "https://github.com/BitSealer/bitsealer-backend" "Ver Backend"
+    click D "https://github.com/BitSealer/bitsealer-timestamp" "Ver Timestamp"
+
+> ⚡ **Descripción del flujo:**
+> 1️⃣ El usuario accede al **panel web React**  
+> 2️⃣ Se comunica con el **API REST Spring Boot** para login, subida y verificación de archivos  
+> 3️⃣ El backend guarda el hash y delega al **microservicio Timestamp** el sellado real  
+> 4️⃣ El microservicio comunica la transacción a la **red Bitcoin**  
+> 5️⃣ El backend actualiza el estado del archivo sellado y lo muestra al usuario  
+
+---
+
+### 🖼️ (B) Versión visual (si prefieres imagen)
+Puedes generar una imagen automática de ese diagrama con Mermaid Live Editor:
+👉 [https://mermaid.live/](https://mermaid.live/)  
+
+Copia el bloque anterior allí, exporta como `.png` y súbelo a tu repo en `/docs/diagram.png`,  
+luego pon esto en el README:
+
+```markdown
+## 🔄 Flujo general del ecosistema BitSealer
+![Arquitectura BitSealer](./docs/diagram.png)
+
+---
+
+## 🚀 Funcionalidades actuales
+
+✅ Registro y autenticación de usuarios (JWT + BCrypt)  
+✅ Subida y cálculo de hash SHA-256 de archivos  
+✅ Historial de archivos sellados por usuario  
+✅ Dashboard con métricas básicas y sellos recientes  
+🔒 Seguridad implementada con Spring Security + filtros JWT  
+⚙️ Preparado para despliegue con Docker (PostgreSQL + API + Frontend)
 
 ---
 
