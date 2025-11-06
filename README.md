@@ -29,22 +29,33 @@
 
 ```mermaid
 graph TD
-    A[👤 Usuario Web] -->|HTTP / JSON| B[🌐 BitSealer Frontend<br/>(React + Tailwind)]
-    B -->|REST API / JWT| C[⚙️ BitSealer Backend<br/>(Spring Boot + PostgreSQL)]
-    C -->|Async Task / HTTP| D[⛓️ BitSealer Timestamp<br/>(Microservicio Blockchain)]
-    D -->|RPC / API| E[₿ Bitcoin Network]
-    C -->|Persistencia| F[(🗄️ Base de Datos PostgreSQL)]
+    A[Usuario Web] -->|HTTP / JSON| B[BitSealer Frontend (React + Tailwind)]
+    B -->|REST API / JWT| C[BitSealer Backend (Spring Boot + PostgreSQL)]
+    C -->|Async Task / HTTP| D[BitSealer Timestamp (Microservicio Blockchain)]
+    D -->|RPC / API| E[Bitcoin Network]
+    C -->|Persistencia| F[(Base de Datos PostgreSQL)]
 
     click B "https://github.com/BitSealer/bitsealer-frontend" "Ver Frontend"
     click C "https://github.com/BitSealer/bitsealer-backend" "Ver Backend"
     click D "https://github.com/BitSealer/bitsealer-timestamp" "Ver Timestamp"
 
-> ⚡ **Descripción del flujo:**
-> 1️⃣ El usuario accede al **panel web React**  
-> 2️⃣ Se comunica con el **API REST Spring Boot** para login, subida y verificación de archivos  
-> 3️⃣ El backend guarda el hash y delega al **microservicio Timestamp** el sellado real  
-> 4️⃣ El microservicio comunica la transacción a la **red Bitcoin**  
-> 5️⃣ El backend actualiza el estado del archivo sellado y lo muestra al usuario  
+---
+
+### 🧠 Explicación rápida
+
+> 1️⃣ El usuario accede al **panel React** (frontend).  
+> 2️⃣ Éste llama al **API REST Spring Boot** con autenticación JWT.  
+> 3️⃣ El backend calcula y guarda el hash en PostgreSQL.  
+> 4️⃣ Si se requiere sellado real, llama al microservicio **Timestamp**.  
+> 5️⃣ El microservicio envía la transacción a la red **Bitcoin**.
+
+---
+
+💡 Consejo:  
+Para darle un toque más pro, puedes poner el título encima con un emoji, así:
+
+```markdown
+## 🧭 Arquitectura general del ecosistema
 
 ---
 
