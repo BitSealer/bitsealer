@@ -32,10 +32,3 @@
 - Preparado para integración asincrónica con el backend principal  
 
 ---
-
-## 🧰 Ejecución local
-
-### 1. Backend (Spring Boot)
-```bash
-cd bitsealer-backend
-./mvnw spring-boot:run
