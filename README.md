@@ -15,10 +15,9 @@
 ## 🧩 Módulos
 
 ### ⚙️ [Backend API — Spring Boot](https://github.com/BitSealer/bitsealer-backend)
-- Controladores REST con JSON puro
-- Seguridad con Spring Security 6 y JWT  
-- Flyway para migraciones de base de datos  
-- Tests unitarios y de integración con Testcontainers  
+- Controladores REST con JSON
+- Seguridad con Spring Security 6, JWT y BCrypt  
+- Flyway para migraciones de base de datos (PostgreSQL)
 
 ### 🖥️ [Frontend — React](https://github.com/BitSealer/bitsealer-frontend)
 - Login / Registro de usuarios  
