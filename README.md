@@ -14,7 +14,6 @@
 ✅ Gestión de estados del sellado (PENDING / ANCHORING / SEALED)  
 ✅ Comunicación asíncrona con microservicio de timestamping  
 ✅ Reintentos automáticos con backoff exponencial para comprobar estado del .ots 
-
 ✅ Persistencia del TXID cuando existe transacción Bitcoin  
 ✅ Historial de archivos sellados por usuario  
 
