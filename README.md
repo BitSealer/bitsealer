@@ -22,15 +22,20 @@
 ## 🧩 Módulos
 
 ### ⚙️ [Backend API — Spring Boot](https://github.com/BitSealer/bitsealer-backend)
-- Controladores REST con JSON
-- Seguridad con Spring Security 6, JWT y BCrypt  
-- Flyway para migraciones de base de datos (PostgreSQL)
+- API REST JSON estructurada por capas (controller / service / repository)
+- Seguridad con Spring Security 6 + JWT (stateless) y BCrypt
+- Orquestación del sellado temporal (estado, reintentos y backoff)
+- Integración con microservicio de timestamping vía REST
+- Persistencia de proofs `.ots` y TXID en PostgreSQL
+- Flyway para versionado y migraciones de base de datos
+- Manejo robusto de errores y tolerancia a fallos del microservicio
 
 ### 🖥️ [Frontend — React](https://github.com/BitSealer/bitsealer-frontend)
-- Login / Registro de usuarios  
-- Subida de archivos y visualización del historial  
-- Dashboard con métricas y gráficos  
-- Interfaz moderna con TailwindCSS  
+- Autenticación de usuarios (login / registro) con JWT
+- Subida de archivos y seguimiento del proceso de sellado
+- Visualización del historial de archivos y su estado de anclaje
+- Dashboard con métricas y estados de los sellados
+- Interfaz moderna y responsive con TailwindCSS
 
 ### ⛓️ [Microservicio Stamper— OpenTimestamps](https://github.com/BitSealer/bitsealer-stamper)
 - Microservicio especializado en sellado temporal (worker)
